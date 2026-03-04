@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Page</title>
+    <link rel="preload" as="image" href="BackGround.png">
+    <link rel="stylesheet" href="Portfolio.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+    <div><h1>Cezster Portfolio</h1></div>
+    <nav>
+        <a href="Portfolio_Gallery.html" class="btn">View Gallery</a>
+        <a href="Portfolio.html" class="btn">HomePage</a>
+        <a href="Portfolio_Projects.html" class="btn">Current Projects</a>
+    </nav>
+  </header>
+<section class="contact-cards">
+
+  <div class="contact-card" id="software-card">
+    <h2>Pricing Information:</h2>
+    <h3>I'm highly flexible, price mostly depend's on a lot of factors like:</h3>
+    <ul class="contact-list">
+      <li>Time</li>
+      <li>Complexity</li>
+      <li>Texturing</li>
+      <li>Rigging or Animation</li>
+    </ul>
+    <h3>So i like to discuss the project beforehand, and get all the details</h3>
+  </div>
+
+  <div class="contact-card" id="software-card">
+    <h2>Contact:</h2>
+    <ul class="contact-list">
+      <li>Gmail:01kozaczek10@gmail.com <button class="copy-btn" data-copy="01kozaczek10@gmail.com">📋</button></li>
+      <li>Gmail:cezsterwork@gmail.com <button class="copy-btn" data-copy="cezsterwork@gmail.com">📋</button></li>
+      <li>Discord:cezster_03 <button class="copy-btn" data-copy="cezster_03">📋</button></li>
+      <li>LinkedIn:Kacper Cezary Krzak <button class="copy-btn" data-copy="Kacper Cezary Krzak">📋</button></li>
+    </ul>
+  </div>
+
+  <div class="contact-card" id="skills-card">
+    <h2>Social Media</h2>
+    <ul class="social-list">
+      <li><a href="https://www.tiktok.com/@0indiegamedev0" target="_blank" rel="noopener noreferrer">Tik Tok</a></li>
+      <li><a href="https://www.youtube.com/@Cezster-1" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+      <li><a href="https://cezster.itch.io" target="_blank" rel="noopener noreferrer">Itch.IO</a></li>
+      <li><a href="https://steamcommunity.com/id/zydyizydy/" target="_blank" rel="noopener noreferrer">Steam</a></li>
+    </ul>
+  </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("loaded");
+});
+
+const links = document.querySelectorAll("a");
+links.forEach(link => {
+  if (link.hostname === location.hostname) {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const href = link.getAttribute("href");
+      document.body.style.opacity = 0;
+      setTimeout(() => {
+        window.location.href = href;
+      }, 500);
+    });
+  }
+});
+</script>
+
+<script>
+const copyButtons = document.querySelectorAll(".copy-btn");
+
+copyButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    const textToCopy = button.getAttribute("data-copy");
+
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      button.textContent = "✔";
+      setTimeout(() => {
+        button.textContent = "📋";
+      }, 1500);
+    });
+  });
+});
+</script>
+
+
+</body>
+</html>

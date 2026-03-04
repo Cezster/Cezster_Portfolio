@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Page</title>
+    <link rel="preload" as="image" href="BackGround.png">
+    <link rel="stylesheet" href="Portfolio.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+    <div><h1>Cezster Portfolio</h1></div>
+    <nav>
+        <a href="Portfolio_Gallery.html" class="btn">View Gallery</a>
+        <a href="Portfolio_Contact.html" class="btn">Contact Information</a>
+        <a href="Portfolio.html" class="btn">HomePage</a>
+    </nav>
+  </header>
+<section class="projects">
+  <div class="projects-card">
+    <h3>The Dreaded Forest</h3>
+    <div class="project-content">
+      <iframe 
+        src="https://store.steampowered.com/widget/4373510/" 
+        frameborder="0" 
+        width="646" 
+        height="190">
+      </iframe>
+      <div class="project-description">
+        <p>
+One day you were looking for a job on some sites, and decided to apply for a position in A.R.A.D Corporation! Turns out they accepted you almost immediately! what luck! or not
+
+They are expecting you will work for at least 5 days! in a forest.... and they are providing not so TOP SHELF EQUIPMENT for you disposal​! everything seems good, till you realize the forest is not what is seems to be, and for some reason, night doesn’t ​pass when you are outside your new, small home
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("loaded");
+});
+
+const links = document.querySelectorAll("a");
+links.forEach(link => {
+  if (link.hostname === location.hostname) {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const href = link.getAttribute("href");
+      document.body.style.opacity = 0;
+      setTimeout(() => {
+        window.location.href = href;
+      }, 500);
+    });
+  }
+});
+</script>
+</body>
+</html>

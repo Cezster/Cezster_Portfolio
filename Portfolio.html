@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Page</title>
+    <link rel="preload" as="image" href="BackGround.png">
+    <link rel="stylesheet" href="Portfolio.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+    <div><h1>Cezster Portfolio</h1></div>
+    <nav>
+        <a href="Portfolio_Gallery.html" class="btn">View Gallery</a>
+        <a href="Portfolio_Contact.html" class="btn">Contact Information</a>
+        <a href="Portfolio_Projects.html" class="btn">Current Projects</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <div class="hero_content">
+    <h1> My name - Kacper Cezary Krzak <span class="nickname"> "Cezster" </span></h1>
+    <div style="white-space:pre-wrap;"><h1>             3D Artist & Developer</h1></div>
+    </div>
+  </section>
+<section class="home-cards">
+  <div class="card" id="about-card">
+    <div style="white-space:pre-wrap;"><h2>About me:</h2><h3>
+Hello! I'm a 23-years old 3D artist and Developer. I specialize in creating 3D models, animations, texturing, and coding in python, currently learning C++</h3></div>
+  </div>
+
+  <div class="card" id="software-card">
+    <h2>Software I Use</h2>
+    <ul>
+      <li>-Blender</li>
+      <li>-Substance Painter 3D</li>
+      <li>-Godot</li>
+      <li>-GIMP</li>
+    </ul>
+  </div>
+
+  <div class="card" id="skills-card">
+    <h2>Skills</h2>
+    <ul>
+      <li>-3D Modeling- LowPoly/HighPoly</li>
+      <li>-Simple Character Design</li>
+      <li>-PBR Texturing</li>
+      <li>-Animation & Rigging</li>
+      <li>-Game Development</li>
+      <li>-Coding</li>
+      <li>-Sound Editing</li>
+    </ul>
+  </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("loaded");
+});
+
+const links = document.querySelectorAll("a");
+links.forEach(link => {
+  if (link.hostname === location.hostname) {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const href = link.getAttribute("href");
+      document.body.style.opacity = 0;
+      setTimeout(() => {
+        window.location.href = href;
+      }, 500);
+    });
+  }
+});
+</script>
+</body>
+</html>
