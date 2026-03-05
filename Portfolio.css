@@ -1,7 +1,7 @@
-body {
+﻿body {
     font-family: Space Grotesk, sans-serif;
     background: #0f0f0f;
-    background: url('BackGround.png') center/cover no-repeat;
+    background: url('BackGround.png') center/cover no-repeat fixed;
     background-size: cover;
     height: 100vh;
     opacity: 0;
@@ -259,37 +259,154 @@ a:hover {
 }
 
 .category-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0 18px;
+
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease;
-  padding: 0 18px;
+}
+
+.category-content.expanded {
+  max-height: 2000px;
 }
 
 .gallery-item {
   padding: 15px 0;
   color: white;
   border-top: 1px solid rgba(255,255,255,0.1);
+  flex: 0 1 160px;
 }
 
 .model-viewer {
-  width: 100%;
-  height: 500px;
-  background: #111;
+  display: block;               /* block for flex layout */
+  width: 200px;                 /* fixed width for each thumbnail */
+  aspect-ratio: 1 / 1;          /* square aspect ratio (adjust if needed) */
   position: relative;
   cursor: pointer;
+  overflow: hidden;             /* ensures overlay stays inside */
+  border: 1px solid #00f7ff;
+  border-radius: 6px;
 }
 
 .model-viewer img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;            /* fills container nicely */
+  display: block;
 }
 
+.model-viewer::after {
+  content: "▶ Click to view 3D";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  color: white;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.model-viewer:hover::after {
+  opacity: 1;
+}
+
+.model-viewer.active::after {
+  display: none;
+}
+
+.model-viewer:hover::after {
+  opacity: 1;
+}
 .viewer-ui {
   position: absolute;
-  bottom: 10px;
+  top: 10px;
   left: 10px;
   z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.viewer-ui button {
+  background: linear-gradient(145deg, #0f1f22, #112e32);
+  color: #00f7ff;
+  border: 2px solid #00f7ff;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 16px;
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.6),       /* depth */
+    inset 0 1px 1px rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+}
+
+.viewer-ui button:hover {
+  background: rgba(0, 247, 255, 0.1);
+  color: white;
+  box-shadow: 0 0 15px #00f7ff, 0 0 30px #00f7ff;
+  transform: scale(1.05) translateY(-3px);
+}
+.viewer-ui div {
+  color: white;
+  font-size: 12px;
+  background: rgba(0,0,0,0.5);
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+.viewer-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 100;
+}
+
+.viewer-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80vh;
+  z-index: 101;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.viewer-container {
+  width: 100%;
+  height: 100%;
+}
+
+.viewer-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 102;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.viewer-close:hover {
+  background: rgba(255,255,255,0.2);
 }
 
 .viewer-ui button {
